@@ -1,107 +1,305 @@
 <div align="center">
 
-📚 Agenda Estudantil (JSP)
+<img src="https://cdn-icons-png.flaticon.com/512/2232/2232688.png" alt="Agenda Estudantil Logo" width="110" />
 
-Um sistema web para gestão de alunos, professores e atividades acadêmicas.
+# 📚 Agenda Estudantil — JSP
 
-<img alt="Status do Projeto" src="https://img.shields.io/badge/Status-Completo-brightgreen.svg"> <img alt="Linguagem" src="https://img.shields.io/badge/Linguagem-Java%20(JSP)-orange?style=flat&logo=java"> </p>
+**Um sistema web para gestão centralizada de alunos, professores**
+**e atividades acadêmicas, desenvolvido com JavaServer Pages.**
+
+<br>
+
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![JSP](https://img.shields.io/badge/JSP-Servlets-007396?style=for-the-badge&logo=java&logoColor=white)
+![Tomcat](https://img.shields.io/badge/Apache%20Tomcat-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completo-brightgreen?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
 </div>
 
----------------------------------------------------------------------------------------------------
-🚀 Sobre o Projeto
+---
 
-O agenda_jsp é um sistema de agenda estudantil focado no ambiente acadêmico. Desenvolvido inteiramente com JavaServer Pages (JSP), ele permite o registo e a gestão centralizada de utilizadores (professores e alunos) e das suas respetivas atividades.
+## 📚 Tabela de Conteúdos
 
----------------------------------------------------------------------------------------------------
-✨ Funcionalidades
+> Navegue rapidamente pelas seções do projeto.
 
-O sistema gira em torno de três pilares principais:
+| # | Seção |
+|:-:|:------|
+| 1 | [📖 Sobre o Projeto](#-sobre-o-projeto) |
+| 2 | [✨ Funcionalidades Principais](#-funcionalidades-principais) |
+| 3 | [🛠️ Pilha de Tecnologias](#️-pilha-de-tecnologias) |
+| 4 | [🗃️ Estrutura do Banco de Dados](#️-estrutura-do-banco-de-dados) |
+| 5 | [📂 Estrutura do Projeto](#-estrutura-do-projeto) |
+| 6 | [🚀 Como Executar](#-como-executar) |
+| 7 | [🤝 Como Contribuir](#-como-contribuir) |
+| 8 | [👨‍💻 Autor](#-autor) |
+| 9 | [📄 Licença](#-licença) |
 
-👨‍🏫 Gestão de Professores: Permite o registo de novos professores no sistema.
+---
 
-🎓 Gestão de Alunos: Permite o registo de novos alunos.
+## 📖 Sobre o Projeto
 
-📝 Gestão de Atividades: Permite o registo e a associação de atividades aos alunos e professores.
+> **Agenda Estudantil** é um sistema web acadêmico desenvolvido inteiramente com **JavaServer Pages (JSP)**, focado no ambiente educacional.
 
----------------------------------------------------------------------------------------------------
-🛠️ Tecnologias Utilizadas
+A aplicação permite o **registro e a gestão centralizada** de usuários do sistema — professores e alunos — e das suas respectivas atividades acadêmicas, com relacionamentos diretos entre os envolvidos em cada tarefa.
 
-A pilha de tecnologia principal para este projeto é:
+---
 
-1. JavaServer Pages (JSP)
+## ✨ Funcionalidades Principais
 
-2. Java (Servlets)
+| Ícone | Módulo | Descrição |
+|:-----:|:-------|:----------|
+| 👨‍🏫 | **Gestão de Professores** | Registro e gerenciamento de professores no sistema acadêmico. |
+| 🎓 | **Gestão de Alunos** | Registro e gerenciamento de alunos vinculados ao sistema. |
+| 📝 | **Gestão de Atividades** | Registro de atividades com associação direta a alunos e professores responsáveis. |
 
-3. HTML/CSS
+---
 
-4. Servidor de Aplicação (Ex: Apache Tomcat)
+## 🛠️ Pilha de Tecnologias
 
-5. Banco de Dados SQL (Ex: MySQL, PostgreSQL)
+| Tecnologia | Função no Projeto |
+|:-----------|:------------------|
+| **Java (JSP / Servlets)** | Linguagem e tecnologia principal para lógica de negócio e renderização server-side. |
+| **JavaServer Pages (JSP)** | Geração dinâmica das páginas HTML com dados do servidor. |
+| **Apache Tomcat** | Servidor de aplicação Java para deploy e execução do projeto. |
+| **MySQL / PostgreSQL** | Banco de dados relacional para persistência dos dados. |
+| **HTML5 & CSS3** | Estrutura e estilização das páginas da aplicação. |
 
----------------------------------------------------------------------------------------------------
-⚙️ Como Executar o Projeto (Exemplo)
+---
 
-Como este é um projeto JSP, ele precisa ser executado num servidor de aplicação Java (como o Apache Tomcat) e, provavelmente, requer um banco de dados.
+## 🗃️ Estrutura do Banco de Dados
 
-1. Clone o repositório:
-git clone [URL_DO_SEU_REPOSITORIO]
+> O banco de dados é composto por **três tabelas principais** com relacionamentos via chaves estrangeiras.
 
-2. Configuração do Banco de Dados
+### 📊 Diagrama de Relacionamento
 
-Importe o script database.sql (se fornecido) para o seu SGBD (Ex: MySQL, PostgreSQL).
+```
+┌─────────────────┐         ┌──────────────────────────┐         ┌───────────────┐
+│   professores   │         │        atividades         │         │    alunos     │
+│─────────────────│         │──────────────────────────│         │───────────────│
+│ id_professor PK │◄────────│ id_professor_resp  FK    │────────►│ id_aluno   PK │
+│ nome            │  1    N │ id_aluno_atrib     FK    │ N    1  │ nome          │
+│ email           │         │ id_atividade       PK    │         │ email         │
+│ senha           │         │ descricao                │         │ senha         │
+└─────────────────┘         │ data_entrega             │         └───────────────┘
+                            └──────────────────────────┘
+```
 
-Localize o ficheiro de configuração da conexão (ex: Conexao.java ou config.properties).
+### 🔧 Script SQL
 
-Altere as credenciais (URL, USUÁRIO, SENHA) para corresponder às do seu ambiente.
-
-3. Configuração do Servidor
-
-Certifique-se de que tem um servidor de aplicação como o Apache Tomcat instalado.
-
-Compile o projeto (se estiver a usar Maven ou Gradle, use mvn install ou gradle build).
-
-Deploy da Aplicação
-
-Copie o ficheiro .war gerado (da pasta target/ ou build/libs/) para a pasta webapps do seu Apache Tomcat.
-
-Inicie o servidor Tomcat.
-
-Aceder à Aplicação
-
-Abra o seu navegador e aceda a: http://localhost:8080/agenda_jsp (ou o nome do contexto do seu projeto).
-
----------------------------------------------------------------------------------------------------
-🗃️ Estrutura da Base de Dados (Sugestão)
-
-Abaixo está uma estrutura de tabelas provável para este tipo de sistema. (Deverá adaptar com base nos ficheiros .sql ou nas classes de modelo do seu projeto).
-
-SQL CODE
-
-
--- Tabela para os Professores
+```sql
+-- ─────────────────────────────────────────
+-- Tabela: Professores
+-- ─────────────────────────────────────────
 CREATE TABLE professores (
     id_professor INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(100) UNIQUE,
-    senha VARCHAR(100)
+    nome         VARCHAR(255) NOT NULL,
+    email        VARCHAR(100) UNIQUE,
+    senha        VARCHAR(100)
 );
 
--- Tabela para os Alunos
+-- ─────────────────────────────────────────
+-- Tabela: Alunos
+-- ─────────────────────────────────────────
 CREATE TABLE alunos (
     id_aluno INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(100) UNIQUE,
-    senha VARCHAR(100)
+    nome     VARCHAR(255) NOT NULL,
+    email    VARCHAR(100) UNIQUE,
+    senha    VARCHAR(100)
 );
 
--- Tabela para as Atividades
+-- ─────────────────────────────────────────
+-- Tabela: Atividades
+-- (relaciona professores e alunos)
+-- ─────────────────────────────────────────
 CREATE TABLE atividades (
-    id_atividade INT PRIMARY KEY AUTO_INCREMENT,
-    descricao TEXT NOT NULL,
-    data_entrega DATE,
+    id_atividade      INT PRIMARY KEY AUTO_INCREMENT,
+    descricao         TEXT NOT NULL,
+    data_entrega      DATE,
     id_professor_resp INT,
-    id_aluno_atrib INT,
+    id_aluno_atrib    INT,
     FOREIGN KEY (id_professor_resp) REFERENCES professores(id_professor),
-    FOREIGN KEY (id_aluno_atrib) REFERENCES alunos(id_aluno)
+    FOREIGN KEY (id_aluno_atrib)    REFERENCES alunos(id_aluno)
 );
+```
+
+---
+
+## 📂 Estrutura do Projeto
+
+```plaintext
+agenda_jsp/
+│
+├── 📄 pom.xml / build.gradle          # ⚙️  Configurações de build (Maven ou Gradle)
+│
+├── 📁 src/
+│   └── 📁 main/
+│       ├── 📁 java/
+│       │   └── 📁 com/agenda/
+│       │       ├── 📄 Conexao.java            # 🔌 Configuração da conexão com o banco
+│       │       ├── 📁 model/
+│       │       │   ├── 📄 Professor.java       # 🏛️  Modelo de Professor
+│       │       │   ├── 📄 Aluno.java           # 🏛️  Modelo de Aluno
+│       │       │   └── 📄 Atividade.java       # 🏛️  Modelo de Atividade
+│       │       ├── 📁 dao/
+│       │       │   ├── 📄 ProfessorDAO.java    # 🗃️  Acesso a dados — Professor
+│       │       │   ├── 📄 AlunoDAO.java        # 🗃️  Acesso a dados — Aluno
+│       │       │   └── 📄 AtividadeDAO.java    # 🗃️  Acesso a dados — Atividade
+│       │       └── 📁 servlet/
+│       │           ├── 📄 ProfessorServlet.java # 🎛️  Controller — Professor
+│       │           ├── 📄 AlunoServlet.java     # 🎛️  Controller — Aluno
+│       │           └── 📄 AtividadeServlet.java # 🎛️  Controller — Atividade
+│       │
+│       └── 📁 webapp/
+│           ├── 📄 index.jsp                    # 🏠 Página inicial
+│           ├── 📁 professores/
+│           │   ├── 📄 cadastro.jsp             # 👨‍🏫 Formulário de cadastro
+│           │   └── 📄 lista.jsp                # 📋 Listagem de professores
+│           ├── 📁 alunos/
+│           │   ├── 📄 cadastro.jsp             # 🎓 Formulário de cadastro
+│           │   └── 📄 lista.jsp                # 📋 Listagem de alunos
+│           ├── 📁 atividades/
+│           │   ├── 📄 cadastro.jsp             # 📝 Formulário de atividade
+│           │   └── 📄 lista.jsp                # 📋 Listagem de atividades
+│           ├── 📁 css/
+│           │   └── 📄 style.css                # 🎨 Folha de estilos
+│           └── 📁 WEB-INF/
+│               └── 📄 web.xml                  # ⚙️  Configuração do Servlet Container
+│
+└── 📄 database.sql                    # 🗃️  Script de criação do banco de dados
+```
+
+---
+
+## 🚀 Como Executar
+
+### 📋 Pré-requisitos
+
+| Requisito | Detalhe |
+|:----------|:--------|
+| **JDK** | Versão **11 ou superior** instalada e configurada no `PATH`. |
+| **Apache Tomcat** | Versão **9 ou superior** instalada e configurada. |
+| **MySQL / PostgreSQL** | Servidor de banco de dados rodando localmente. |
+| **IDE** | Recomenda-se **Eclipse IDE for Enterprise Java** ou **IntelliJ IDEA Ultimate**. |
+| **Git** | Para clonar o repositório. |
+
+---
+
+### 🔧 Passo a Passo
+
+**1. Clone o repositório:**
+
+```bash
+git clone https://github.com/VictorHJesusSantiago/agenda_jsp.git
+cd agenda_jsp
+```
+
+**2. Configure o banco de dados:**
+
+```bash
+# Acesse seu SGBD e execute o script de criação:
+mysql -u root -p < database.sql
+```
+
+Em seguida, localize o arquivo de conexão (ex: `Conexao.java` ou `config.properties`) e atualize as credenciais:
+
+```java
+// Exemplo em Conexao.java
+String URL    = "jdbc:mysql://localhost:3306/agenda_jsp";
+String USUARIO = "seu_usuario";
+String SENHA   = "sua_senha";
+```
+
+**3. Compile e gere o arquivo `.war`:**
+
+```bash
+# Com Maven
+mvn clean install
+
+# Com Gradle
+gradle build
+```
+
+**4. Faça o deploy no Tomcat:**
+
+```bash
+# Copie o .war gerado para a pasta webapps do Tomcat
+cp target/agenda_jsp.war /caminho/para/tomcat/webapps/
+
+# Inicie o servidor
+/caminho/para/tomcat/bin/startup.sh   # Linux / macOS
+/caminho/para/tomcat/bin/startup.bat  # Windows
+```
+
+---
+
+### 🛰️ Acesso à Aplicação
+
+| Serviço | URL |
+|:--------|:----|
+| 🏠 **Página Inicial** | `http://localhost:8080/agenda_jsp` |
+| 👨‍🏫 **Professores** | `http://localhost:8080/agenda_jsp/professores` |
+| 🎓 **Alunos** | `http://localhost:8080/agenda_jsp/alunos` |
+| 📝 **Atividades** | `http://localhost:8080/agenda_jsp/atividades` |
+
+---
+
+## 🤝 Como Contribuir
+
+> Contribuições são muito bem-vindas! Siga as etapas abaixo para colaborar de forma organizada.
+
+| Passo | Ação | Comando |
+|:-----:|:-----|:--------|
+| 1️⃣ | **Fork** | Crie um fork do repositório para a sua conta. | — |
+| 2️⃣ | **Branch** | Crie sua feature branch a partir da `main`. | `git checkout -b feature/NovaFeature` |
+| 3️⃣ | **Commit** | Salve as alterações com mensagem clara e semântica. | `git commit -m 'feat: Adiciona NovaFeature'` |
+| 4️⃣ | **Push** | Envie a branch para o repositório remoto. | `git push origin feature/NovaFeature` |
+| 5️⃣ | **Pull Request** | Abra um PR detalhando as mudanças realizadas. | — |
+
+<div align="center">
+
+<br>
+
+**Se este projeto foi útil para os seus estudos, deixe uma estrela ⭐️ no repositório!**
+
+</div>
+
+---
+
+## 👨‍💻 Autor
+
+<div align="center">
+
+<br>
+
+**Victor H. J. Santiago**
+
+<br>
+
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/VictorHJesusSantiago)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/victor-henrique-de-jesus-santiago/)
+
+</div>
+
+---
+
+## 📄 Licença
+
+<div align="center">
+
+Este projeto está distribuído sob a **Licença MIT**.
+Consulte o arquivo [`LICENSE`](./LICENSE) no repositório para mais informações.
+
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+
+</div>
+
+---
+
+<div align="center">
+
+*Feito com 📚 e Java por **Victor H. J. Santiago***
+
+</div>
